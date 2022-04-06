@@ -1,19 +1,28 @@
+<div>
+  <form [formGroup]="formdata" (ngSubmit)="clickSubmit(formdata.value)">
+Enter username <input type="text" placeholder="userName" name="uname" 
+formControlName="uname">
+<div *ngIf="formdata.controls['uname'].errors?.['required']">
+  <p>It should not be empty </p>
+</div>
 
-<!-- <a routerLink="display">Display</a> &nbsp; &nbsp; &nbsp; 
-<a routerLink="search"> Search </a> &nbsp; &nbsp; &nbsp; 
-<a routerLink="register">Register</a> &nbsp; &nbsp; &nbsp; 
--->
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link" routerLink="display">Display</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="search">Search</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="register">Add Post</a>
-  </li>
-  
- </ul>
+<div *ngIf="formdata.controls['uname'].errors?.['minlength']">
+  <p>It mut be 6 characters long </p>
+</div>
+<br>
 
+Enter password <input type="password" placeholder="password" name="passwd" 
+formControlName="passwd" >
+<div *ngIf="formdata.controls['passwd'].errors?.['required']">
+  <p>It cannot be empty</p>
+</div>
+
+<div *ngIf="formdata.controls['passwd'].errors?.['minlength']">
+ <p> It mut be 8 characters long</p> 
+</div>
+
+</form>
+     
+
+</div>
 <router-outlet></router-outlet>
