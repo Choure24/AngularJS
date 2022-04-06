@@ -1,0 +1,63 @@
+<h2>Register Here </h2>
+<form [formGroup]="formdata" (ngSubmit)="check(formdata.value)">
+Enter comment id <input type="text" placeholder="comment id" name="cid" 
+formControlName="cid" [(ngModel)]="cid">
+<div *ngIf="formdata.controls['cid'].errors?.['required']">
+    <p>It cannot be empty</p>
+</div>
+<div *ngIf="formdata.controls['cid'].errors?.['minlength']">
+    <p>It must be atleast two digit number</p>
+</div>
+
+<div *ngIf="formdata.controls['cid'].errors?.['maxlength']">
+    <p>It cannnot be greater than a 4  digit number</p>
+</div>
+<br>
+Enter post id <input type="text" placeholder="post id " name="pid" 
+formControlName="pid" [(ngModel)]="pid">
+<div *ngIf="formdata.controls['pid'].errors?.['required']">
+    <p>It cannot be empty</p>
+</div>
+
+
+<div *ngIf="formdata.controls['pid'].errors?.['maxlength']">
+    <p>It must be a  4  digit number</p>
+</div>
+<br>
+
+Enter commenter name<input type="text" placeholder="commenter " name="commenter" 
+formControlName="commenter" [(ngModel)]="commenter">
+<div *ngIf="formdata.controls['commenter'].errors?.['required']">
+    <p>It cannot be empty</p>
+</div>
+<div *ngIf="formdata.controls['commenter'].errors?.['minlength']">
+    <p>Commenter name shoudl be at least of 5 words </p>
+</div>
+
+<div *ngIf="formdata.controls['commenter'].errors?.['maxlength']">
+    <p>It cannnot be greater than a 10  digit number</p>
+</div>
+<br>
+
+Enter comment <input type="text" placeholder="comment" name="comment" 
+formControlName="comment" [(ngModel)]="comment">
+<div *ngIf="formdata.controls['comment'].errors?.['required']">
+    <p>It cannot be empty</p>
+</div>
+<div *ngIf="formdata.controls['comment'].errors?.['minlength']">
+    <p>It must be atleast 10 characters long </p>
+</div>
+
+<div *ngIf="formdata.controls['comment'].errors?.['maxlength']">
+    <p>It cannnot be greater  20 characters </p>
+</div>
+<br>
+
+
+
+<button (click)="check">Register </button>
+<div *ngIf="this.isValidFormSubmitted">
+    <p style="color: aquamarine;">{{msg}}</p>
+</div>
+</form>
+
